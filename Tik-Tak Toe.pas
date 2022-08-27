@@ -3,10 +3,10 @@
 uses GraphABC;
 
 type
-  tile = integer;
+  tile = integer;// 0-Ничего 1-X 2-O
   row = array of tile;
   grid = array of row;
-  cords = array[0..1] of integer;
+  cords = array[0..1] of integer; //Специально для работы с кординатами
 
 const
   fps = 20;
@@ -102,7 +102,7 @@ begin
   mouseX := x;
   mouseY := y;
 end;
-
+//Создает новое поле размерами width и height
 procedure resetField(width: integer; height: integer);
 var
   rowid, tileid: integer;
@@ -120,7 +120,7 @@ begin
     end;
   end;
 end;
-
+//Рисует незаполненный квадрат
 procedure square(x1, y1, width, height: integer);
 begin
   Line(x1, y1, x1 + width, y1);
@@ -128,7 +128,7 @@ begin
   Line(x1 + width, y1, x1 + width, y1 + height);
   Line(x1, y1 + height, x1 + width, y1 + height);
 end;
-
+//Возвращает либо true либо false
 function randBool(): boolean;
 begin
   if(Random(2) = 1) then begin
